@@ -156,6 +156,45 @@ This is not optional instrumentation. It is a first-class feature of `pm`.
 Build configuration lives in `pm.toml` at the repository root. This file is
 the input to `pm build` — it is never read by agents directly.
 
+**`pm.toml` is a machine-readable artifact, not a human interface.** Users
+interact with the CLI, which mediates all reading and writing of config.
+`pm.toml` should be optimized for correctness and explicit state, not
+human readability. The CLI commands (`pm explain`, `pm list`, `pm role list`)
+are the human interface over this file.
+
+This means verbosity in `pm.toml` is acceptable — the CLI handles presentation.
+Do not sacrifice explicitness for brevity in the config itself.
+
+### Roles
+
+Roles are named bundles of capabilities that can be assigned to multiple
+agents. They follow the RBAC model: define a role once, assign it to any
+number of agents. An agent's full capability set is: its declared roles +
+its individual skills.
+
+```toml
+[roles.org-agent]
+# Capabilities granted to all agents in the organization
+
+[[roles.org-agent.skills]]
+name = "mail"
+path = ".pm/prompts/skills/mail.md"
+include = "inline"
+
+[[roles.org-agent.skills]]
+name = "relay-chat"
+path = ".pm/prompts/skills/relay-chat.md"
+include = "inline"
+
+[agents.devops-engineer]
+base = ".pm/prompts/base/devops-engineer.md"
+platform = "chatbot"
+roles = ["org-agent"]
+```
+
+Roles are resolved at build time — the agent's built prompt includes all
+capabilities from its roles and its individual skill declarations.
+
 ```toml
 [build]
 output = ".pm/build"
@@ -251,6 +290,11 @@ pm size <agent>                         # report estimated token cost of the bui
 pm update <agent> <skill>              # update a skill and rebuild
 pm pull <skill> <agent>                # load a by-reference skill inline for the current session
 pm pull <workflow> <agent>             # load a by-reference workflow inline for the current session
+
+# Roles
+pm role list                           # list all defined roles and their capabilities
+pm role show <role>                    # show full capability set for a role
+pm role add <agent> <role>             # assign a role to an agent and rebuild
 
 # Memory
 pm memory list <agent>                 # list memory files scoped to an agent
