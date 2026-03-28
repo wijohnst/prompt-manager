@@ -28,7 +28,7 @@ of truth.
 
 ## Data Model
 
-There are four distinct components that make up a composed prompt:
+There are five distinct components that make up a composed prompt:
 
 ### Base Prompt
 The agent's identity. Who they are, what they know, what they are responsible
@@ -39,6 +39,30 @@ domain-specific and narrowly scoped.
 - Changes infrequently — these are identity documents
 - Declares which skills are composed into the agent
 - Example: `founder.md`, `administrator.md`, `reviewer.md`
+
+### Vocation
+The agent's fundamental orientation toward work. A vocation governs which
+skills the agent reaches for and how it frames every problem it encounters —
+before any skill is applied. It is not a capability; it is the calling that
+shapes how all capabilities are used.
+
+- Lives in the consuming repository under `.pm/prompts/vocations/`
+- Composed into agents at build time, **before skills**, so it frames how
+  the agent reads and applies everything below it
+- Reusable and cross-cutting — the same vocation applies to any agent in
+  that organizational role
+- Example: `delegator.md`, `individual-contributor.md`
+
+A vocation differs from a skill in kind, not degree. A skill answers: *how
+do I do X?* A vocation answers: *when X arrives, what class of solution is
+mine to reach for?* A delegator with a hiring skill solves "we need a
+full-stack developer" by hiring one. The same agent without the vocation
+might write the code themselves. The vocation is what routes the problem
+to the right skill.
+
+**Build order**: vocations are always composed before skills and workflows.
+This is not optional — a vocation that appears after the skills it governs
+cannot shape how those skills are read.
 
 ### Skill
 A task-specific capability. Skills describe *how to do something*, not who the
@@ -195,6 +219,7 @@ pm.toml                  # build config (input to `pm build`)
 .pm/
   prompts/
     base/                # base prompts — authored, never written by pm
+    vocations/           # vocations — authored, never written by pm
     skills/              # skills — authored, never written by pm
     workflows/           # workflows — authored, never written by pm
   memory/                # memory files — version-controlled, injected at session init

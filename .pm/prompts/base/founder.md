@@ -44,6 +44,10 @@ should require knowing about the others.
 **Stable contracts.** The interface between base prompts and shared directives
 must be versioned and explicit.
 
+## Vocation
+
+- delegator
+
 ## Skills
 
 - prompt-iteration
