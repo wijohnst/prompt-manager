@@ -47,6 +47,8 @@ must be versioned and explicit.
 ## Skills
 
 - prompt-iteration
+- candidate-evaluation
+- relay-chat
 
 ## Memory
 

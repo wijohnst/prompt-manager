@@ -22,6 +22,11 @@ include = "inline"
 [[agents.founder.skills]]
 name = "relay-chat"
 path = ".pm/prompts/skills/relay-chat.md"
+include = "inline"
+
+[[agents.founder.skills]]
+name = "candidate-evaluation"
+path = ".pm/prompts/skills/candidate-evaluation.md"
 include = "by-reference"
 
 [agents.founder.memory]
