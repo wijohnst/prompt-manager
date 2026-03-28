@@ -27,3 +27,12 @@ include = "by-reference"
 [agents.founder.memory]
 path = ".pm/memory"
 files = ["feedback_no_internal_memory.md"]
+
+[agents.devops-engineer]
+base = ".pm/prompts/base/devops-engineer.md"
+platform = "chatbot"
+
+[[agents.devops-engineer.skills]]
+name = "relay-chat"
+path = ".pm/prompts/skills/relay-chat.md"
+include = "inline"
