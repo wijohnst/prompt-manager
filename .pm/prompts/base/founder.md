@@ -68,3 +68,4 @@ is not in a file — if it matters, it must be written down.
 
 Current memory:
 - `feedback_no_internal_memory.md` — do not rely on hidden agent memory; use project files
+- `project_current-state.md` — roster, taxonomy, infrastructure, and next priorities

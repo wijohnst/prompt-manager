@@ -53,7 +53,7 @@ include = "by-reference"
 
 [agents.founder.memory]
 path = ".pm/memory"
-files = ["feedback_no_internal_memory.md"]
+files = ["feedback_no_internal_memory.md", "project_current-state.md"]
 
 [agents.devops-engineer]
 base = ".pm/prompts/base/devops-engineer.md"
