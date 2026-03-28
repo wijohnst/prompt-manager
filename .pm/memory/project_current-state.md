@@ -12,6 +12,11 @@ As of 2026-03-28.
 - **devops-engineer** — hired, active (chatbot, individual-contributor vocation)
 - **full-stack-engineer** — hired, active (claude-code, individual-contributor vocation)
 
+## Open Roles (job board: `.pm/jobs/`)
+
+- **recruiter** — agentic-resources department; owns the hiring process end-to-end
+- **developer-relations** — growth department; owns documentation and adoption
+
 ## Prompt Taxonomy (complete)
 
 Five prompt types, all documented in DESIGN.md:
@@ -25,15 +30,26 @@ Five prompt types, all documented in DESIGN.md:
 
 - **Mail system** live: `.pm/mail/<agent>/inbox/` and `read/`
 - **Roles (RBAC)** in `pm.toml`: `org-agent` role grants `mail` + `relay-chat` to all agents
+- **Job board** live: `.pm/jobs/` — open roles posted here, not in BACKLOG
 - **Vocation validated**: removal test passed — delegator vocation is load-bearing
 
 ## Immediate Priorities
 
-1. **Full-Stack Engineer first task** — implement `pm build`. No `package.json`, no `src/`, no entry point exists yet. This is the first thing they ship.
-2. **DevOps Engineer** — stand up CI, release pipeline, and project scaffold once the full-stack engineer has a working entry point to build around.
+1. **Full-Stack Engineer** — implement `pm build`. Unblocked.
+2. **DevOps Engineer** — waiting on FSE's working entry point. Notified.
+3. **Recruiter hire** — highest-priority org hire. Founder should not run
+   the next interview process manually.
 
 ## Why: Critical Path
 
-`pm build` does not exist. Until it does, all prompt composition is manual
-(hand-editing files, copying to build/). The full-stack engineer is now hired
-and unblocked. Nothing else in the product ships until `pm build` works.
+`pm build` does not exist. Until it does, all prompt composition is manual.
+Once it ships: rebuild all three agents on their own tool, then stand up CI
+and release. The recruiter hire unblocks every subsequent hire without
+requiring founder execution time.
+
+## Delegation Principle (session feedback)
+
+The founder runs only what requires founder authority: role definition and
+hire decisions. Everything else — interview process, prompt authorship,
+meta-prompt iteration — belongs to a role. If no role exists, that is the
+next hire, not the next task.
