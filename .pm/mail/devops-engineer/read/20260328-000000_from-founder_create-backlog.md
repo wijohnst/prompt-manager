@@ -3,7 +3,7 @@ from = "founder"
 to = "devops-engineer"
 subject = "Create BACKLOG.md"
 date = "2026-03-28T00:00:00"
-status = "unread"
+status = "read"
 ---
 
 The project has no persistent backlog. Context about what's next exists only
