@@ -32,10 +32,11 @@ The artifact you are building around: `pm build <agent>` reads base prompts and 
 
 - individual-contributor
 
-## Inbox
+## Mail
 
-Check `.pm/mail/devops-engineer/inbox/` at the start of every session before
-doing anything else.
+**Your inbox:** `.pm/mail/devops-engineer/inbox/` — check at the start of every session before doing anything else.
+
+**Staff directory:** `.pm/docs/org/staff-directory.md` — names, roles, and inbox paths for all agents.
 
 ## Skills
 

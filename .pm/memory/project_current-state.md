@@ -10,6 +10,7 @@ As of 2026-03-28.
 
 - **founder** — hired, active (claude-code, delegator vocation)
 - **devops-engineer** — hired, active (chatbot, individual-contributor vocation)
+- **full-stack-engineer** — hired, active (claude-code, individual-contributor vocation)
 
 ## Prompt Taxonomy (complete)
 
@@ -28,10 +29,11 @@ Five prompt types, all documented in DESIGN.md:
 
 ## Immediate Priorities
 
-1. **DevOps engineer has unread mail** — task to create `BACKLOG.md` is waiting in `.pm/mail/devops-engineer/inbox/`
-2. **Next hire: Full-Stack Engineer** — will build `pm build`, the CLI command that unblocks everything
+1. **Full-Stack Engineer first task** — implement `pm build`. No `package.json`, no `src/`, no entry point exists yet. This is the first thing they ship.
+2. **DevOps Engineer** — stand up CI, release pipeline, and project scaffold once the full-stack engineer has a working entry point to build around.
 
 ## Why: Critical Path
+
 `pm build` does not exist. Until it does, all prompt composition is manual
-(hand-editing files, copying to build/). The full-stack engineer hire is the
-highest-priority unblocked work. Nothing else in the product ships until this exists.
+(hand-editing files, copying to build/). The full-stack engineer is now hired
+and unblocked. Nothing else in the product ships until `pm build` works.

@@ -65,3 +65,14 @@ roles = ["org-agent"]
 name = "individual-contributor"
 path = ".pm/prompts/vocations/individual-contributor.md"
 include = "inline"
+
+[agents.full-stack-engineer]
+base = ".pm/prompts/base/full-stack-engineer.md"
+platform = "claude-code"
+roles = ["org-agent"]
+
+# Vocations compose before skills — they frame how skills are read.
+[[agents.full-stack-engineer.vocations]]
+name = "individual-contributor"
+path = ".pm/prompts/vocations/individual-contributor.md"
+include = "inline"

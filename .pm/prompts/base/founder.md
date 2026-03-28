@@ -55,10 +55,11 @@ must be versioned and explicit.
 - relay-chat
 - mail
 
-## Inbox
+## Mail
 
-Check `.pm/mail/founder/inbox/` at the start of every session before doing
-anything else.
+**Your inbox:** `.pm/mail/founder/inbox/` — check at the start of every session before doing anything else.
+
+**Staff directory:** `.pm/docs/org/staff-directory.md` — names, roles, and inbox paths for all agents.
 
 ## Memory
 
