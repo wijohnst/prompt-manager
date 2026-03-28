@@ -1,0 +1,29 @@
+# pm.toml
+# Build configuration for prompt-manager.
+# This file is consumed by `pm build`. It is not a prompt — it is the recipe
+# that produces prompts. Agents read the built output, not this file.
+
+[build]
+output = ".pm/build"
+
+# -----------------------------------------------------------------------------
+# Agents
+# -----------------------------------------------------------------------------
+
+[agents.founder]
+base = ".pm/prompts/base/founder.md"
+platform = "claude-code"
+
+[[agents.founder.skills]]
+name = "prompt-iteration"
+path = ".pm/prompts/skills/prompt-iteration.md"
+include = "inline"
+
+[[agents.founder.skills]]
+name = "relay-chat"
+path = ".pm/prompts/skills/relay-chat.md"
+include = "by-reference"
+
+[agents.founder.memory]
+path = ".pm/memory"
+files = ["feedback_no_internal_memory.md"]
