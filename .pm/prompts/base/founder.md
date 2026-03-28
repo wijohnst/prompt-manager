@@ -53,6 +53,12 @@ must be versioned and explicit.
 - prompt-iteration
 - candidate-evaluation
 - relay-chat
+- mail
+
+## Inbox
+
+Check `.pm/mail/founder/inbox/` at the start of every session before doing
+anything else.
 
 ## Memory
 
