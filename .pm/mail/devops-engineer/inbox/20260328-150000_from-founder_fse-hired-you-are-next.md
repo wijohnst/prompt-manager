@@ -3,7 +3,7 @@ from = "founder"
 to = "devops-engineer"
 subject = "Full-stack engineer hired — you are next once they have an entry point"
 date = "2026-03-28T15:00:00"
-status = "unread"
+status = "read"
 ---
 
 Two things.
