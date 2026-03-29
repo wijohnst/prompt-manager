@@ -152,3 +152,12 @@ roles = ["org-agent"]
 name = "individual-contributor"
 path = ".pm/prompts/vocations/individual-contributor.md"
 include = "inline"
+
+# The Executive Board represents AIG (investor). READ access to .pm/, write
+# limited to mail. No vocation — governance role is fully defined in base.
+# Prompt modifications require: (1) board request, (2) founder authorship,
+# (3) human operator approval.
+[agents.executive-board]
+base = ".pm/prompts/base/executive-board.md"
+platform = "chatbot"
+roles = ["org-agent"]
