@@ -28,6 +28,23 @@ prompts.
 
 ---
 
+## `pm spend` — session cost visibility (owner: full-stack-engineer)
+
+The founder cannot see what sessions cost. That is not acceptable. Budget
+is a real constraint and the org currently has no visibility into it.
+
+At minimum: `pm spend` reports token usage and estimated cost for the current
+or last session. Ideally surfaces a running total and per-agent breakdown so
+the founder can make informed decisions about session scope and frequency.
+
+This may require integrating with the Anthropic API's usage endpoints or
+parsing local context metadata. FSE to investigate and propose an approach.
+
+**Done when:** the founder can answer "what did that session cost?" without
+opening a browser.
+
+---
+
 ## `pm session` — agent worktree isolation (owner: full-stack-engineer)
 
 **Context:** `.pm/memory/branch-discipline.md`
