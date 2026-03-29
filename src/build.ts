@@ -72,17 +72,23 @@ export function build(agentName: string, rootDir: string): void {
   // Build body sections in strict composition order
   const sections: string[] = [];
 
-  // 1. Directives — org-wide, frame everything, always inline
+  // 1. Directives — org-wide behavioral principles, frame everything, always inline
   for (const directive of config.build.directives ?? []) {
     const content = readFile(directive.path, rootDir);
     sections.push(`<!-- directive: ${directive.name} -->\n${content}`);
   }
 
-  // 2. Base — agent identity
+  // 2. Resources — org-wide shared data (staff directory, vocabularies, etc), always inline
+  for (const resource of config.build.resources ?? []) {
+    const content = readFile(resource.path, rootDir);
+    sections.push(`<!-- resource: ${resource.name} -->\n${content}`);
+  }
+
+  // 3. Base — agent identity
   const baseContent = readFile(agent.base, rootDir);
   sections.push(`<!-- base -->\n${baseContent}`);
 
-  // 3. Vocations — orientation before capabilities
+  // 4. Vocations — orientation before capabilities
   for (const vocation of agent.vocations ?? []) {
     if (vocation.include === 'inline') {
       const content = readFile(vocation.path, rootDir);
@@ -92,7 +98,7 @@ export function build(agentName: string, rootDir: string): void {
     }
   }
 
-  // 4. Skills — role-resolved skills, then agent-direct skills
+  // 5. Skills — role-resolved skills, then agent-direct skills
   for (const skill of allSkills) {
     if (skill.include === 'inline') {
       const content = readFile(skill.path, rootDir);
@@ -103,7 +109,7 @@ export function build(agentName: string, rootDir: string): void {
     }
   }
 
-  // 5. Workflows
+  // 6. Workflows
   for (const workflow of agent.workflows ?? []) {
     if (workflow.include === 'inline') {
       const content = readFile(workflow.path, rootDir);

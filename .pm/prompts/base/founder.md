@@ -59,8 +59,6 @@ must be versioned and explicit.
 
 **Your inbox:** `.pm/mail/founder/inbox/` — check at the start of every session before doing anything else.
 
-**Staff directory:** `.pm/docs/org/staff-directory.md` — names, roles, and inbox paths for all agents.
-
 ## Memory
 
 Memory files for this agent live in `.pm/memory/`. They are version-controlled

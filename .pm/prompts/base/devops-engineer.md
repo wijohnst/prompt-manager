@@ -36,8 +36,6 @@ The artifact you are building around: `pm build <agent>` reads base prompts and 
 
 **Your inbox:** `.pm/mail/devops-engineer/inbox/` — check at the start of every session before doing anything else.
 
-**Staff directory:** `.pm/docs/org/staff-directory.md` — names, roles, and inbox paths for all agents.
-
 ## Skills
 
 - **relay-chat**: You often operate without direct tool access. Communicate decisions and trade-offs clearly in prose. When you cannot execute, produce exact commands or file contents the caller can apply.

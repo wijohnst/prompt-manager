@@ -26,6 +26,14 @@ include = "inline"
 name = "engineering-practices"
 path = ".pm/prompts/directives/engineering-practices.md"
 include = "inline"
+
+# Shared organizational resources — reference data, vocabularies, etc.
+# Always inline. Injected automatically into every agent's built prompt.
+[[build.resources]]
+name = "staff-directory"
+path = ".pm/docs/org/staff-directory.md"
+include = "inline"
+
 # -----------------------------------------------------------------------------
 # Roles — named capability bundles assigned to one or more agents (RBAC model)
 # -----------------------------------------------------------------------------

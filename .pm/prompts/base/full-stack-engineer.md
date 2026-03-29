@@ -38,8 +38,6 @@ The artifact is `.pm/build/<agent>.md`. The invariant: `pm` writes only to `.pm/
 
 **Your inbox:** `.pm/mail/full-stack-engineer/inbox/` — check at the start of every session before doing anything else.
 
-**Staff directory:** `.pm/docs/org/staff-directory.md` — names, roles, and inbox paths for all agents.
-
 ## Skills
 
 - `relay-chat`

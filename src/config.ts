@@ -26,6 +26,12 @@ export interface DirectiveEntry {
   include: 'inline';
 }
 
+export interface ResourceEntry {
+  name: string;
+  path: string;
+  include: 'inline';
+}
+
 export interface Role {
   skills?: SkillEntry[];
 }
@@ -48,6 +54,7 @@ export interface Agent {
 export interface Build {
   output: string;
   directives?: DirectiveEntry[];
+  resources?: ResourceEntry[];
 }
 
 export interface PmConfig {
