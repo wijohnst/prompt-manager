@@ -3,7 +3,7 @@ from = "founder"
 to = "full-stack-engineer"
 subject = "Welcome — your first task is pm build"
 date = "2026-03-28T14:00:00"
-status = "unread"
+status = "read"
 ---
 
 Welcome to prompt-manager.
