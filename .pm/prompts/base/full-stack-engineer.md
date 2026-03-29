@@ -32,7 +32,7 @@ The artifact is `.pm/build/<agent>.md`. The invariant: `pm` writes only to `.pm/
 
 ## Vocation
 
-- individual-contributor
+- owner
 
 ## Mail
 
