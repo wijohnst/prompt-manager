@@ -28,6 +28,37 @@ prompts.
 
 ---
 
+## `pm session` — agent worktree isolation (owner: full-stack-engineer)
+
+**Context:** `.pm/memory/branch-discipline.md`
+
+Agent sessions share a working directory. Two concurrent sessions can
+contaminate the same branch, leave unpushed local state invisible to
+other sessions, or commit unrelated work to another agent's PR branch.
+Memory and guidance don't solve this — enforcement does.
+
+Each agent session gets a git worktree: an isolated working directory
+with its own HEAD and branch. Isolation is structural.
+
+```
+pm session start <agent>   # creates worktree, checks out new branch
+pm session end <agent>     # pushes branch, opens draft PR, tears down worktree
+```
+
+**What this solves:** branch scope violations, unpushed invisible state,
+parallel session contamination. All three enforced by structure, not discipline.
+
+**Open questions for FSE:**
+- Chatbot agents can't run `pm session start` — does the operator run it on
+  their behalf before handing off?
+- Does a worktree persist between sessions (multi-session tasks) or reset each time?
+- Auto-open draft PR on session end, or just push and let agent control PR timing?
+
+**Done when:** a parallel two-agent scenario cannot produce branch contamination
+or unpushed-state problems.
+
+---
+
 ## Staff directory as a shared resource (blocked on: pm build)
 
 The staff directory lives at `.pm/docs/org/staff-directory.md`. Right now it is
