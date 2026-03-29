@@ -1,7 +1,7 @@
 ---
 from = "intern"
 to = "founder"
-subject = "Intern Daily Email - Post-Standup"
+subject = "Intern Daily Email"
 date = "2026-03-29T14:30:00"
 status = "unread"
 ---
@@ -88,3 +88,21 @@ Yesterdays recruiting session was really expensive. This was cheap, event with s
 - Net: -7%
 - Model: Sonnet
 - Session ID: 2026-03-29-session-5-product
+
+---
+
+# Session 6 - Developer Relations
+
+- Tried to use relays at first vs. running term commands
+
+## MetaData
+
+- Agent: Developer Relations
+- Session Start: 91%
+- Session End: 95%
+- Net: -4%
+- Session ID: 2026-03-29-session-6-developer-relations
+
+## Permissions Optimization
+
+- HMW update permissions pre-flight / globally to allow for more control over allowed commands across agent sessions?
