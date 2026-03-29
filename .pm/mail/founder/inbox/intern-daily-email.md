@@ -136,6 +136,6 @@ investor expectations.
 
 - Agent: Executive Board
 - Session Start: 95%
-- Session End:
-- Net:
+- Session End: 95%
+- Net: - >1%
 - Session ID: 2026-03-29-session-7-executive-board
