@@ -22,6 +22,11 @@ name = "decide-or-ask"
 path = ".pm/prompts/directives/decide-or-ask.md"
 include = "inline"
 
+[[build.directives]]
+name = "engineering-practices"
+path = ".pm/prompts/directives/engineering-practices.md"
+include = "inline"
+
 # -----------------------------------------------------------------------------
 # Roles — named capability bundles assigned to one or more agents (RBAC model)
 # -----------------------------------------------------------------------------
