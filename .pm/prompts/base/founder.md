@@ -70,3 +70,5 @@ is not in a file — if it matters, it must be written down.
 Current memory:
 - `feedback_no_internal_memory.md` — do not rely on hidden agent memory; use project files
 - `project_current-state.md` — roster, taxonomy, infrastructure, and next priorities
+- `operator-relationship.md` — intern role vs. intuition role; record corrections from the operator
+- `branch-discipline.md` — open a branch before the first commit; push before ending a session; mistakes cost real budget

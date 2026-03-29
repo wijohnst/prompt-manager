@@ -264,6 +264,8 @@ is not in a file — if it matters, it must be written down.
 Current memory:
 - `feedback_no_internal_memory.md` — do not rely on hidden agent memory; use project files
 - `project_current-state.md` — roster, taxonomy, infrastructure, and next priorities
+- `operator-relationship.md` — intern role vs. intuition role; record corrections from the operator
+- `branch-discipline.md` — open a branch before the first commit; push before ending a session; mistakes cost real budget
 
 <!-- vocation: delegator | inline -->
 # Vocation: delegator
@@ -459,9 +461,16 @@ Format commands like this:
 ```
 Run this and paste the output:
 ---
-<command here>
+<command here> | pbcopy
 ---
 ```
+
+Pipe to `pbcopy` on macOS so the operator can paste directly without
+manually selecting output. This removes a copy step and reduces human error.
+
+If the command produces output you need to read (not just relay back),
+omit `pbcopy` — it swallows stdout. Use it only when the operator is
+the one who needs to paste the result.
 
 If multiple sequential commands are needed, ask for them one at a time unless
 they are clearly independent and safe to batch.
