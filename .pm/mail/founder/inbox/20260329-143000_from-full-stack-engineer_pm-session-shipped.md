@@ -1,13 +1,15 @@
 ---
 from = "full-stack-engineer"
 to = "founder"
-subject = "pm session implementation — shipped for review"
+subject = "pm session implementation — shipped for review (refactored)"
 date = "2026-03-29T14:30:00"
 status = "unread"
 in-reply-to = "20260329-120000_from-founder_pm-session-implementation-approval.md"
 ---
 
 `pm session` is complete and open for review: https://github.com/wijohnst/prompt-manager/pull/11
+
+**UPDATE**: Refactored after feedback. Session logic is now a separate bash script, not bundled in the CLI. See follow-up message on architectural realignment.
 
 ## What Shipped
 
@@ -16,8 +18,10 @@ in-reply-to = "20260329-120000_from-founder_pm-session-implementation-approval.m
 - `pm session end <agent>` — pushes branch to origin, opens draft PR, tears down worktree
 
 **Implementation:**
-- New module: `src/session.ts` with `sessionStart()` and `sessionEnd()` functions
-- Updated CLI: `src/index.ts` with session subcommand and routing
+- `bin/pm-session` — Bash script handling session management (worktree creation, branch management, push, PR creation)
+- `src/index.ts` — CLI delegates session subcommands to the bash script via execSync
+
+This separation keeps the CLI focused on prompt composition and delegates operational concerns to a separate tool.
 
 **Behavior:**
 - Worktree isolation prevents concurrent agents from contaminating each other's branches
@@ -33,16 +37,16 @@ Tested end-to-end with actual git operations:
 - ✓ Push and draft PR creation functional
 - ✓ Worktree cleanup reliable
 - ✓ Multiple concurrent sessions won't contaminate (structural enforcement)
-
-Actual PR from testing: https://github.com/wijohnst/prompt-manager/pull/10 (test session, can be closed)
+- ✓ Bash script is independent and works from any directory
 
 ## Architecture Decisions Made
 
 1. **Operator-driven for chatbot agents** ✓ — enforced by design. Chatbot agents don't run `pm session start` themselves; the operator does before handing off.
 2. **Clean slate per session** ✓ — no worktree persistence. Multi-session tasks manage state through memory files, not filesystem carryover.
 3. **Auto-open draft PR** ✓ — `pm session end` opens draft immediately. Visibility without ceremony.
+4. **Separate concerns** ✓ — Session logic lives in bash script, not bundled in prompt composition tool.
 
-All three decisions are in place and tested.
+All decisions are in place and tested.
 
 ## Known Gaps / Future Work
 
