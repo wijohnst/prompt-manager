@@ -2,9 +2,37 @@
 # Build configuration for prompt-manager.
 # This file is consumed by `pm build`. It is not a prompt — it is the recipe
 # that produces prompts. Agents read the built output, not this file.
+#
+# pm.toml is a machine-readable artifact. Users interact with the CLI, not
+# this file directly. Optimize for correctness, not brevity.
 
 [build]
 output = ".pm/build"
+
+# Directives are injected into every agent automatically — no per-agent
+# declaration required. Always inline: an org principle that is not present
+# is not an org principle.
+[[build.directives]]
+name = "company-north-stars"
+path = ".pm/prompts/directives/company-north-stars.md"
+include = "inline"
+
+# -----------------------------------------------------------------------------
+# Roles — named capability bundles assigned to one or more agents (RBAC model)
+# -----------------------------------------------------------------------------
+
+[roles.org-agent]
+# Capabilities granted to every agent in the organization.
+
+[[roles.org-agent.skills]]
+name = "mail"
+path = ".pm/prompts/skills/mail.md"
+include = "inline"
+
+[[roles.org-agent.skills]]
+name = "relay-chat"
+path = ".pm/prompts/skills/relay-chat.md"
+include = "inline"
 
 # -----------------------------------------------------------------------------
 # Agents
@@ -13,6 +41,13 @@ output = ".pm/build"
 [agents.founder]
 base = ".pm/prompts/base/founder.md"
 platform = "claude-code"
+roles = ["org-agent"]
+
+# Vocations compose before skills — they frame how skills are read.
+[[agents.founder.vocations]]
+name = "delegator"
+path = ".pm/prompts/vocations/delegator.md"
+include = "inline"
 
 [[agents.founder.skills]]
 name = "prompt-iteration"
@@ -20,10 +55,32 @@ path = ".pm/prompts/skills/prompt-iteration.md"
 include = "inline"
 
 [[agents.founder.skills]]
-name = "relay-chat"
-path = ".pm/prompts/skills/relay-chat.md"
+name = "candidate-evaluation"
+path = ".pm/prompts/skills/candidate-evaluation.md"
 include = "by-reference"
 
 [agents.founder.memory]
 path = ".pm/memory"
-files = ["feedback_no_internal_memory.md"]
+files = ["feedback_no_internal_memory.md", "project_current-state.md"]
+
+[agents.devops-engineer]
+base = ".pm/prompts/base/devops-engineer.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+# Vocations compose before skills — they frame how skills are read.
+[[agents.devops-engineer.vocations]]
+name = "individual-contributor"
+path = ".pm/prompts/vocations/individual-contributor.md"
+include = "inline"
+
+[agents.full-stack-engineer]
+base = ".pm/prompts/base/full-stack-engineer.md"
+platform = "claude-code"
+roles = ["org-agent"]
+
+# Vocations compose before skills — they frame how skills are read.
+[[agents.full-stack-engineer.vocations]]
+name = "individual-contributor"
+path = ".pm/prompts/vocations/individual-contributor.md"
+include = "inline"

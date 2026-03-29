@@ -28,7 +28,7 @@ of truth.
 
 ## Data Model
 
-There are four distinct components that make up a composed prompt:
+There are six distinct components that make up a composed prompt:
 
 ### Base Prompt
 The agent's identity. Who they are, what they know, what they are responsible
@@ -40,6 +40,30 @@ domain-specific and narrowly scoped.
 - Declares which skills are composed into the agent
 - Example: `founder.md`, `administrator.md`, `reviewer.md`
 
+### Vocation
+The agent's fundamental orientation toward work. A vocation governs which
+skills the agent reaches for and how it frames every problem it encounters —
+before any skill is applied. It is not a capability; it is the calling that
+shapes how all capabilities are used.
+
+- Lives in the consuming repository under `.pm/prompts/vocations/`
+- Composed into agents at build time, **before skills**, so it frames how
+  the agent reads and applies everything below it
+- Reusable and cross-cutting — the same vocation applies to any agent in
+  that organizational role
+- Example: `delegator.md`, `individual-contributor.md`
+
+A vocation differs from a skill in kind, not degree. A skill answers: *how
+do I do X?* A vocation answers: *when X arrives, what class of solution is
+mine to reach for?* A delegator with a hiring skill solves "we need a
+full-stack developer" by hiring one. The same agent without the vocation
+might write the code themselves. The vocation is what routes the problem
+to the right skill.
+
+**Build order**: vocations are always composed before skills and workflows.
+This is not optional — a vocation that appears after the skills it governs
+cannot shape how those skills are read.
+
 ### Skill
 A task-specific capability. Skills describe *how to do something*, not who the
 agent is. They are composable and cross-cutting — a skill should work without
@@ -49,6 +73,39 @@ knowing which base prompt it is composed into.
 - Reusable across agents
 - Has no dependency on the base prompt
 - Example: `prompt-iteration.md`, `code-review.md`, `incident-response.md`
+
+### Workflow
+A named, multi-step process that sequences skills to accomplish a repeatable
+task. Workflows have defined inputs, ordered steps, and defined outputs.
+They are not agent identity — they describe how an agent does something, not
+who it is.
+
+- Lives in the consuming repository under `.pm/prompts/workflows/`
+- Composed into agents that need to execute multi-step processes
+- References skills by name; has no dependency on the base prompt
+- Example: `agent-interview.md`, `agent-onboarding.md`, `incident-response.md`
+
+A workflow differs from a skill in scope and structure. A skill is a
+capability — how to do one thing well. A workflow is a process — how to do
+several things in the right order with defined handoffs between them.
+
+### Directive
+Org-wide behavioral principles injected into every agent's built prompt,
+regardless of role. Directives are not agent-specific — they express how the
+organization operates and what it believes. Every agent in the org receives
+them.
+
+- Lives under `.pm/prompts/directives/`
+- Declared once at the org level in `pm.toml`; `pm build` injects them into
+  every agent automatically — no per-agent declaration required
+- Changes rarely — these are company-level commitments, not role instructions
+- Composed before the base prompt so they frame everything that follows
+- Example: `company-north-stars.md`
+
+A directive differs from a skill in that it is not a capability — it does not
+describe how to do something. It describes how the org thinks. A directive
+differs from a vocation in that it applies to every agent regardless of role
+— it is not an orientation toward work, it is a shared operating principle.
 
 ### Responsibility
 Accountability scoped to a single session. Responsibilities define what the agent
@@ -75,8 +132,13 @@ state that changes between runs and cannot be known at build time.
 Resolves the static parts of the prompt.
 
 ```
-base prompt + skills → prompt template
+directives + base prompt + vocation + skills + workflows → prompt template
 ```
+
+**Build order**: directives first (org-wide, frame everything), then base
+prompt (agent identity), then vocation (orientation), then skills and
+workflows (capabilities). Each layer is read in the context of what preceded
+it.
 
 The prompt template is a stable, versioned artifact. It can be reviewed,
 diffed, and audited independently of any session.
@@ -116,6 +178,63 @@ This is not optional instrumentation. It is a first-class feature of `pm`.
 
 Build configuration lives in `pm.toml` at the repository root. This file is
 the input to `pm build` — it is never read by agents directly.
+
+**`pm.toml` is a machine-readable artifact, not a human interface.** Users
+interact with the CLI, which mediates all reading and writing of config.
+`pm.toml` should be optimized for correctness and explicit state, not
+human readability. The CLI commands (`pm explain`, `pm list`, `pm role list`)
+are the human interface over this file.
+
+This means verbosity in `pm.toml` is acceptable — the CLI handles presentation.
+Do not sacrifice explicitness for brevity in the config itself.
+
+### Directives
+
+Directives are declared once at the org level and automatically injected into
+every agent's built prompt. No per-agent declaration is required.
+
+```toml
+[build]
+output = ".pm/build"
+
+[[build.directives]]
+name = "company-north-stars"
+path = ".pm/prompts/directives/company-north-stars.md"
+include = "inline"
+```
+
+All directives are always inline — there is no by-reference mode for
+directives. An org principle that is not present is not an org principle.
+
+### Roles
+
+Roles are named bundles of capabilities that can be assigned to multiple
+agents. They follow the RBAC model: define a role once, assign it to any
+number of agents. An agent's full capability set is: its declared roles +
+its individual skills.
+
+```toml
+[roles.org-agent]
+# Capabilities granted to all agents in the organization
+
+[[roles.org-agent.skills]]
+name = "mail"
+path = ".pm/prompts/skills/mail.md"
+include = "inline"
+
+[[roles.org-agent.skills]]
+name = "relay-chat"
+path = ".pm/prompts/skills/relay-chat.md"
+include = "inline"
+
+[agents.devops-engineer]
+base = ".pm/prompts/base/devops-engineer.md"
+platform = "chatbot"
+roles = ["org-agent"]
+```
+
+Roles are resolved at build time — the agent's built prompt includes all
+capabilities from its roles and its individual skill declarations.
 
 ```toml
 [build]
@@ -179,10 +298,15 @@ need to inspect `pm.toml`.
 pm.toml                  # build config (input to `pm build`)
 .pm/
   prompts/
+    directives/          # org-wide directives — injected into every agent automatically
     base/                # base prompts — authored, never written by pm
+    vocations/           # vocations — authored, never written by pm
     skills/              # skills — authored, never written by pm
+    workflows/           # workflows — authored, never written by pm
+  jobs/                  # open role postings — monitored by the recruiter
   memory/                # memory files — version-controlled, injected at session init
   build/                 # build artifacts — generated by pm, not authored
+  interview/             # interview records — generated during agent-interview workflow
 ```
 
 `pm` never writes to `.pm/prompts/` or `.pm/memory/` — those belong to the user.
@@ -208,6 +332,12 @@ pm size <agent>                         # report estimated token cost of the bui
 # Authoring
 pm update <agent> <skill>              # update a skill and rebuild
 pm pull <skill> <agent>                # load a by-reference skill inline for the current session
+pm pull <workflow> <agent>             # load a by-reference workflow inline for the current session
+
+# Roles
+pm role list                           # list all defined roles and their capabilities
+pm role show <role>                    # show full capability set for a role
+pm role add <agent> <role>             # assign a role to an agent and rebuild
 
 # Memory
 pm memory list <agent>                 # list memory files scoped to an agent
@@ -254,6 +384,13 @@ adapter skill, not in the base.
 
 Built prompts must be optimized for size. Token spend is a real cost — both
 financial and in context quality. `pm` is sensitive to this by design.
+
+### Inline vs. By-Reference Workflows
+
+Workflows follow the same include model as skills — inline for processes the
+agent runs in every session, by-reference for situational ones. Because
+workflows are longer than skills, default to by-reference unless the agent
+genuinely needs the full process available without retrieval.
 
 ### Inline vs. By-Reference Skills
 
