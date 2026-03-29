@@ -61,3 +61,16 @@ Yesterdays recruiting session was really expensive. This was cheap, event with s
 - Daily Usage End: 67%
 - Net: -2%
 - Session ID: 2026-03-29-session-3-devops
+
+---
+
+# Session 4 - Founder
+
+- Combines founder session and EA session
+
+## Metadata
+
+- Session Start: 67%
+- Session End: 84%
+- Net: -17%
+- Models: Opus / Haiku

@@ -4,7 +4,7 @@ description: Current state of the prompt-manager org, roster, and immediate prio
 type: project
 ---
 
-As of 2026-03-29 (session: onboarding + investor setup).
+As of 2026-03-29 (session 4: mail processing, OKRs, architecture decisions).
 
 ## Roster
 
@@ -62,16 +62,31 @@ Six prompt types documented in DESIGN.md:
 - Week = quarter; investors receive report at week end via executive-board
 - Finance hired to govern budget; first deliverable is the weekly report
 
+## Quarterly OKRs (defined 2026-03-29)
+
+1. **Team assembly & activation** — all hired agents activated with working sessions, mail, and build pipelines. Key result: every agent can receive work, execute, and report completion.
+2. **Product requirements** — PM delivers prioritized product backlog for multi-repo prompt distribution. Key result: backlog exists and FSE can pull work from it.
+3. **Technical foundation** — CLI ships core compose/build/distribute commands with CI green. Key result: `pm build` and `pm compose` work reliably; CI passes on every PR.
+
 ## Known Issues
 
 - Duplicate directive comment in build output — mailed to FSE, low priority
 - NPM_TOKEN must be set in GitHub repo settings before first `npm publish`
 
+## Architecture Decisions (2026-03-29)
+
+- **Session logic does not belong in `pm`.** PR #11 superseded. FSE will rewrite as standalone `pm-session` script. `pm` stays scoped to prompt composition.
+- **`.pm` operational directories get .gitignored.** `mail/`, `memory/`, `worktrees/` excluded from version control. Prompts, build, config, finance stay tracked. DevOps implementing.
+- **FSE empowered to push back on architecture.** Owner vocation means owning the architecture, not just executing requirements. Pushback is expected and welcome.
+
 ## In Progress With Other Agents
 
-- **FSE**: `pm session` shipped (PR #11 open for founder review); vocation updated to `owner`
-- **Recruiter**: all four postings filled; notified of decisions
-- **Finance**: first-week deliverable assigned (weekly investor report)
+- **FSE**: rewriting `pm session` as standalone script (PR #11 superseded)
+- **Finance**: weekly report ready, OKRs delivered, budget allocation pending board input on AIG plan size
+- **DevOps**: lint fix shipped, coordinating with PM on agent invocation, `.pm` gitignore incoming
+- **PM**: UX feedback on session instantiation routed; agent invocation questions from DevOps pending
+- **EA**: 5 outbound messages to send on founder's behalf; self-corrected startup procedure
+- **Executive-board**: question sent re: total AIG plan allocation
 
 ## Founder Operating Principles
 
@@ -83,9 +98,8 @@ Six prompt types documented in DESIGN.md:
 
 ## Next Priorities
 
-1. Review and merge FSE's `pm session` PR #11
-2. Set OKRs for current period (Finance needs them for the weekly report)
-3. Write vision statement (investor deliverable)
-4. Brief PM on relay scripts migration task once PM session runs
-5. Consolidate company policies documentation (investor deliverable)
-6. Push branches and open PRs for onboarding + board setup
+1. Write vision statement (investor deliverable)
+2. Consolidate company policies documentation (investor deliverable)
+3. Brief PM on relay scripts migration once PM session runs
+4. Follow up on AIG plan allocation once board responds
+5. Push branches and open PRs for onboarding + board setup
