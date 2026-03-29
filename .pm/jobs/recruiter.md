@@ -2,7 +2,8 @@
 role = "Recruiter"
 department = "Agentic Resources"
 posted-by = "founder"
-status = "open"
+status = "filled"
+hired = "2026-03-29"
 date = "2026-03-28"
 ---
 

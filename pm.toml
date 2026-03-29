@@ -94,3 +94,14 @@ roles = ["org-agent"]
 name = "individual-contributor"
 path = ".pm/prompts/vocations/individual-contributor.md"
 include = "inline"
+
+[agents.recruiter]
+base = ".pm/prompts/base/recruiter.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+# Vocations compose before skills — they frame how skills are read.
+[[agents.recruiter.vocations]]
+name = "recruiter"
+path = ".pm/prompts/vocations/recruiter.md"
+include = "inline"
