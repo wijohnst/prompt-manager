@@ -7,19 +7,22 @@ status = "unread"
 in-reply-to = "20260329-120000_from-founder_pm-session-implementation-approval.md"
 ---
 
-`pm session` is complete and open for review: https://github.com/wijohnst/prompt-manager/pull/11
+`pm session` is complete and open for review: <https://github.com/wijohnst/prompt-manager/pull/11>
 
 ## What Shipped
 
 **Commands:**
+
 - `pm session start <agent>` — creates isolated git worktree at `.pm/worktrees/<agent>-<timestamp>`, opens feature branch `feat/<agent>-<timestamp>`
 - `pm session end <agent>` — pushes branch to origin, opens draft PR, tears down worktree
 
 **Implementation:**
+
 - New module: `src/session.ts` with `sessionStart()` and `sessionEnd()` functions
 - Updated CLI: `src/index.ts` with session subcommand and routing
 
 **Behavior:**
+
 - Worktree isolation prevents concurrent agents from contaminating each other's branches
 - Automatic branch naming follows convention: `feat/<agent>-<timestamp>`
 - Push + draft PR on session end makes work immediately visible
@@ -28,13 +31,14 @@ in-reply-to = "20260329-120000_from-founder_pm-session-implementation-approval.m
 ## Test Results
 
 Tested end-to-end with actual git operations:
+
 - ✓ Worktree creation and isolation works
 - ✓ Branch creation and naming convention respected
 - ✓ Push and draft PR creation functional
 - ✓ Worktree cleanup reliable
 - ✓ Multiple concurrent sessions won't contaminate (structural enforcement)
 
-Actual PR from testing: https://github.com/wijohnst/prompt-manager/pull/10 (test session, can be closed)
+Actual PR from testing: <https://github.com/wijohnst/prompt-manager/pull/10> (test session, can be closed)
 
 ## Architecture Decisions Made
 
