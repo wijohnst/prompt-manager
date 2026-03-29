@@ -4,66 +4,63 @@ description: Current state of the prompt-manager org, roster, and immediate prio
 type: project
 ---
 
-As of 2026-03-29 (session: org structure + budget model).
+As of 2026-03-29 (session: onboarding + investor setup).
 
 ## Roster
 
-- **founder** — hired, active (claude-code, delegator vocation, Opus model)
+- **executive-board** — AIG investor representative, governance/oversight (chatbot, no vocation, Sonnet)
+- **founder** — hired, active (claude-code, delegator vocation, Opus model) — reports to executive-board
 - **devops-engineer** — hired, active (chatbot, individual-contributor vocation, Sonnet)
 - **full-stack-engineer** — hired, active (claude-code, **owner vocation**, Sonnet)
 - **recruiter** — hired, active (chatbot, recruiter vocation, Haiku)
+- **executive-assistant** — hired, not yet activated (chatbot, individual-contributor, Haiku)
+- **finance** — hired, not yet activated (chatbot, individual-contributor, Sonnet)
+- **product-manager** — hired, not yet activated (chatbot, owner vocation, Sonnet)
+- **developer-relations** — hired, deferred activation (chatbot, individual-contributor, Sonnet)
 - **intern** — human operator, all departments, no authority
 
-## Open Roles (job board: `.pm/jobs/`)
+## Investor Relationship (AIG)
 
-Priority order:
-1. **executive-assistant** — founder's office; inbox, decision execution, coordination (Haiku)
-2. **finance** — budget allocation, OKR tracking, investor reporting (Sonnet)
-3. **product-manager** — owns backlog and feature design; founder stops doing product (Sonnet)
-4. **developer-relations** — growth; documentation and adoption (Sonnet)
+- Weekly token budget: 50% of investor's Claude Base plan
+- Weekly reporting required: spend vs. allotment by tier, OKR status, outcomes, next-period ask
+- Outstanding deliverables: product roadmap, vision statement, company policies documentation
+- All investor communication flows through executive-board
+- Board prompt changes require: board request → founder authorship → human operator approval
 
 ## Model Tier Policy (salary analogy)
 
 - **Opus** — founder (strategic decisions, global problems)
-- **Sonnet** — department heads and technical contributors (DevOps, FSE, Design, Product, Finance)
-- **Haiku** — business/operational contributors (Recruiter, EA, Scrum Master, Jr. FSE)
+- **Sonnet** — department heads and technical contributors (DevOps, FSE, Finance, PM, DevRel, Board)
+- **Haiku** — business/operational contributors (Recruiter, EA)
 
 ## Prompt Taxonomy (complete)
 
 Six prompt types documented in DESIGN.md:
 1. Directive, 2. Base prompt, 3. Vocation, 4. Skill, 5. Workflow, 6. Responsibility
 
-## New Vocations
+## Vocations
 
-- **owner** (`.pm/prompts/vocations/owner.md`) — owns a domain, accountable for
-  its health, authority AND responsibility to push back; domain-agnostic
+- **delegator** — founder
+- **individual-contributor** — DevOps, FSE (also owner), EA, Finance, DevRel
+- **owner** — FSE, PM (owns domain, has authority to push back)
+- **recruiter** — recruiter
 
 ## Infrastructure
 
 - **Mail system** live: `.pm/mail/<agent>/inbox/` and `read/`
 - **Mail convention**: mail commits always go to main, never feature branches
-- **Job board** live: `.pm/jobs/`
+- **Job board** live: `.pm/jobs/` — all four postings now filled
 - **CI/release pipeline** live
 - **pm build** live: all agents build cleanly
 - **Relay infrastructure** — planned; DevOps implements after PM designs migration
-  from source repo; do not fork, copy what we need
 
 ## Budget Model
 
 - Currency: tokens
 - Weekly allotment: 50% of investor's Claude Base plan ($20/month)
 - Session (~4 hours) = day-to-day unit
-- Week = quarter; investors receive report at week end
-- Budget currently ungoverned — Finance hire is the fix
-- Spend tokens to save tokens: automate deterministic work, run inference-heavy
-  work in free browser chat via relay pattern
-
-## pm Data Model Decisions
-
-- **Platform**: do NOT encode in pm data model; relay-chat skill handles platform
-  adaptation; pm is a prompt composition tool, not a deployment system
-- **Model**: open question for product manager; may belong as a default in
-  pm.toml, not as a hard constraint
+- Week = quarter; investors receive report at week end via executive-board
+- Finance hired to govern budget; first deliverable is the weekly report
 
 ## Known Issues
 
@@ -72,22 +69,23 @@ Six prompt types documented in DESIGN.md:
 
 ## In Progress With Other Agents
 
-- **FSE**: `pm session` shipped (PR #11 open for founder review); vocation
-  updated to `owner`; awaiting merge approval
-- **Recruiter**: four open postings (EA, Finance, PM, dev-rel), prioritized
+- **FSE**: `pm session` shipped (PR #11 open for founder review); vocation updated to `owner`
+- **Recruiter**: all four postings filled; notified of decisions
+- **Finance**: first-week deliverable assigned (weekly investor report)
 
-## Founder Operating Principles (this session)
+## Founder Operating Principles
 
-- Founder does not design features or manage the product backlog — that is PM's job
-- Founder does not do Haiku-level work (file writes, inbox, coordination) — that
-  is EA's job
-- Founder owns: north star, principles, OKRs, cross-domain trade-offs, investor
-  relationship, hire decisions
+- Founder does not design features or manage the product backlog — PM's job
+- Founder does not do Haiku-level work (file writes, inbox, coordination) — EA's job
+- Founder owns: north star, principles, OKRs, cross-domain trade-offs, investor relationship, hire decisions
 - Founder stays out of: feature design, implementation details, operational overhead
+- Founder reports to executive-board on investor matters
 
-## Next Session Priorities
+## Next Priorities
 
 1. Review and merge FSE's `pm session` PR #11
-2. Receive first hire recommendation from recruiter (EA first)
-3. Set OKRs for current period once Finance is hired
-4. Brief PM on relay scripts migration task once PM is hired
+2. Set OKRs for current period (Finance needs them for the weekly report)
+3. Write vision statement (investor deliverable)
+4. Brief PM on relay scripts migration task once PM session runs
+5. Consolidate company policies documentation (investor deliverable)
+6. Push branches and open PRs for onboarding + board setup
