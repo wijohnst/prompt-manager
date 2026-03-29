@@ -8,6 +8,7 @@ Copies in `~/.claude/projects/` are caches — update here first.
 
 ## Behavioral
 - [operator-relationship](./operator-relationship.md) — How the founder relates to the human operator; intern vs. intuition; when to record corrections
+- [branch-discipline](./branch-discipline.md) — Hard lesson: open a branch before the first commit, never commit to another agent's PR branch
 
 ## Feedback
 - [no-internal-memory-for-prompt-manager](./feedback_no_internal_memory.md) — Do not rely on hidden agent memory; use project files only
