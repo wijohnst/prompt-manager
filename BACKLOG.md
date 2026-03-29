@@ -6,29 +6,18 @@ Open roles are tracked in `.pm/jobs/`. Hiring items do not belong here.
 
 ---
 
-## Implement `pm build` (owner: full-stack-engineer)
+## ✓ SHIPPED: `pm build` command
 
-Build the `pm build <agent>` CLI command that reads `pm.toml`, composes base
-prompt + vocation + skills + workflows for the named agent, and writes the
-result to `.pm/build/<agent>.md` with TOML frontmatter describing the composed
-agent.
+The `pm build <agent>` CLI command is complete. It reads `pm.toml`, composes base
+prompt + vocation + skills + workflows for the named agent, and writes the result
+to `.pm/build/<agent>.md` with TOML frontmatter describing the composed agent.
 
-This is the highest-priority unblocked work. Nothing else in the product ships
-until this exists.
-
----
-
-## Rebuild agents on their own tool (blocked on: pm build)
-
-Once `pm build` ships, the first build targets are the three existing agents:
-founder, devops-engineer, full-stack-engineer. All three are currently running
-on raw base prompts with vocations declared but not composed in. This is the
-end-to-end validation that the tool works and the agents are running on correct
-prompts.
+All three existing agents (founder, devops-engineer, full-stack-engineer) rebuild
+cleanly on their own tool. CI/release pipeline is live.
 
 ---
 
-## `pm session` — agent worktree isolation (owner: full-stack-engineer)
+## `pm session` — agent worktree isolation (owner: full-stack-engineer, in progress)
 
 **Context:** `.pm/memory/branch-discipline.md`
 
@@ -59,10 +48,38 @@ or unpushed-state problems.
 
 ---
 
-## Staff directory as a shared resource (blocked on: pm build)
+## ✓ SHIPPED: Staff directory as shared resource
 
-The staff directory lives at `.pm/docs/org/staff-directory.md`. Right now it is
-referenced manually in each base prompt. Once `pm build` exists, it should be
-declared in `pm.toml` as a shared resource and injected automatically into every
-agent's built prompt — so adding a new hire means one file update, not N prompt
-edits.
+Staff directory is declared in `pm.toml` as a shared resource and automatically
+injected into every agent's built prompt. New hires require one file update, not
+N prompt edits.
+
+---
+
+## Multi-repository support (owner: full-stack-engineer, blocked on: pm session)
+
+Right now `pm` assumes a single repository with a single `.pm/` directory at the root.
+For adoption across an organization, `pm` must work when cloned/copied into any
+repository. This means:
+
+- Configuration discovery — `pm` finds `pm.toml` regardless of where it's invoked
+- Flexible output paths — built prompts go to `.pm/build/` in each repo, not globally
+- Clear distribution pattern — documented way to adopt pm in a new repo (README, scaffolding)
+
+**Done when:** developer-relations can write a complete "add pm to your repo" guide
+and a new developer can follow it without asking questions.
+
+---
+
+## CLI commands: list, explain, validate (owner: full-stack-engineer, blocked on: multi-repo)
+
+Human-friendly CLI interface over the prompt composition model:
+
+- `pm list agents` — show all agents in pm.toml with descriptions
+- `pm list directives` — show all org directives with descriptions
+- `pm list skills <agent>` — show skills composed into a specific agent
+- `pm explain <agent>` — show where each line of a built prompt came from
+- `pm validate` — check pm.toml syntax and catch composition errors early
+
+**Done when:** a user can explore and understand their prompt architecture without
+reading TOML directly.
