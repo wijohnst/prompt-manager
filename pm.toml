@@ -112,3 +112,43 @@ roles = ["org-agent"]
 name = "recruiter"
 path = ".pm/prompts/vocations/recruiter.md"
 include = "inline"
+
+[agents.executive-assistant]
+base = ".pm/prompts/base/executive-assistant.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+[[agents.executive-assistant.vocations]]
+name = "individual-contributor"
+path = ".pm/prompts/vocations/individual-contributor.md"
+include = "inline"
+
+[agents.finance]
+base = ".pm/prompts/base/finance.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+[[agents.finance.vocations]]
+name = "individual-contributor"
+path = ".pm/prompts/vocations/individual-contributor.md"
+include = "inline"
+
+[agents.product-manager]
+base = ".pm/prompts/base/product-manager.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+[[agents.product-manager.vocations]]
+name = "owner"
+path = ".pm/prompts/vocations/owner.md"
+include = "inline"
+
+[agents.developer-relations]
+base = ".pm/prompts/base/developer-relations.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+[[agents.developer-relations.vocations]]
+name = "individual-contributor"
+path = ".pm/prompts/vocations/individual-contributor.md"
+include = "inline"

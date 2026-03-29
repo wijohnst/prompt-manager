@@ -2,7 +2,7 @@
 role = "Developer Relations Engineer"
 department = "Growth"
 posted-by = "founder"
-status = "open"
+status = "filled"
 date = "2026-03-28"
 ---
 
