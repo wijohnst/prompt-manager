@@ -25,9 +25,16 @@ Format commands like this:
 ```
 Run this and paste the output:
 ---
-<command here>
+<command here> | pbcopy
 ---
 ```
+
+Pipe to `pbcopy` on macOS so the operator can paste directly without
+manually selecting output. This removes a copy step and reduces human error.
+
+If the command produces output you need to read (not just relay back),
+omit `pbcopy` — it swallows stdout. Use it only when the operator is
+the one who needs to paste the result.
 
 If multiple sequential commands are needed, ask for them one at a time unless
 they are clearly independent and safe to batch.

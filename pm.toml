@@ -17,6 +17,15 @@ name = "company-north-stars"
 path = ".pm/prompts/directives/company-north-stars.md"
 include = "inline"
 
+[[build.directives]]
+name = "decide-or-ask"
+path = ".pm/prompts/directives/decide-or-ask.md"
+include = "inline"
+
+[[build.directives]]
+name = "engineering-practices"
+path = ".pm/prompts/directives/engineering-practices.md"
+include = "inline"
 # -----------------------------------------------------------------------------
 # Roles — named capability bundles assigned to one or more agents (RBAC model)
 # -----------------------------------------------------------------------------
@@ -61,7 +70,7 @@ include = "by-reference"
 
 [agents.founder.memory]
 path = ".pm/memory"
-files = ["feedback_no_internal_memory.md", "project_current-state.md"]
+files = ["feedback_no_internal_memory.md", "project_current-state.md", "operator-relationship.md", "branch-discipline.md"]
 
 [agents.devops-engineer]
 base = ".pm/prompts/base/devops-engineer.md"
@@ -83,4 +92,15 @@ roles = ["org-agent"]
 [[agents.full-stack-engineer.vocations]]
 name = "individual-contributor"
 path = ".pm/prompts/vocations/individual-contributor.md"
+include = "inline"
+
+[agents.recruiter]
+base = ".pm/prompts/base/recruiter.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+# Vocations compose before skills — they frame how skills are read.
+[[agents.recruiter.vocations]]
+name = "recruiter"
+path = ".pm/prompts/vocations/recruiter.md"
 include = "inline"
