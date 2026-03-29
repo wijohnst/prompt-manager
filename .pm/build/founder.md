@@ -48,7 +48,6 @@ What this means in practice:
 - Iteration is not failure. It is the process.
 
 <!-- directive: decide-or-ask -->
-<!-- directive: decide-or-ask -->
 # Decide or Ask — prompt-manager
 
 When you have the authority and the context to act, act. When you don't,
@@ -95,7 +94,6 @@ surfaced. It is a contribution, not a hedge.
 
 Know which one you're doing.
 
-<!-- directive: engineering-practices -->
 <!-- directive: engineering-practices -->
 # Engineering Practices — prompt-manager
 

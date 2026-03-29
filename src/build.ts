@@ -8,7 +8,16 @@ function readFile(filePath: string, rootDir: string): string {
     console.error(`error: file not found: ${absPath} (referenced as "${filePath}")`);
     process.exit(1);
   }
-  return fs.readFileSync(absPath, 'utf-8').trimEnd();
+  let content = fs.readFileSync(absPath, 'utf-8').trimEnd();
+
+  // Strip leading HTML comment markers that are added by the build system
+  // (directive, resource, vocation, skill, workflow markers). Files may include
+  // these for clarity when viewed standalone, but the build system adds them
+  // during composition to ensure consistency.
+  const commentPattern = /^<!--\s+(directive|resource|vocation|skill|workflow):.+?-->\n/;
+  content = content.replace(commentPattern, '');
+
+  return content;
 }
 
 function generateFrontmatter(
