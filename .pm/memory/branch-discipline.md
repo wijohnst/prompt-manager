@@ -53,3 +53,26 @@ opened before the first commit.
 
 Reviewing a PR and fixing a gap found during review are different concerns.
 The review happens on the PR branch. The fix goes on a new branch.
+
+## The Parallel Sessions Problem
+
+The sync divergence in this session had a deeper cause than branch hygiene.
+
+Two sessions ran concurrently without coordination: the founder session
+produced 22 commits on local main that were never pushed; the devops-engineer
+session branched off an earlier origin/main and built the CI pipeline. Neither
+session knew what the other was doing. The result was two diverged histories
+telling different stories about the same project.
+
+The devops-engineer flagged the symptom correctly. The root cause: local main
+was 22 commits deep and invisible to any other session.
+
+**Rule: push to remote before ending a session, or before another agent's
+session is likely to branch.** An unpushed local main is hidden state. Any
+session that branches off origin/main without seeing it is building on an
+incomplete picture. The cost shows up later — in conflicts, in diverged
+histories, in agents making decisions without full context.
+
+This org runs on remote state. Local state that isn't pushed doesn't exist
+for anyone else.
+
