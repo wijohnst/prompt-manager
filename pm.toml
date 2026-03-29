@@ -9,6 +9,14 @@
 [build]
 output = ".pm/build"
 
+# Directives are injected into every agent automatically — no per-agent
+# declaration required. Always inline: an org principle that is not present
+# is not an org principle.
+[[build.directives]]
+name = "company-north-stars"
+path = ".pm/prompts/directives/company-north-stars.md"
+include = "inline"
+
 # -----------------------------------------------------------------------------
 # Roles — named capability bundles assigned to one or more agents (RBAC model)
 # -----------------------------------------------------------------------------
