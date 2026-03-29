@@ -4,7 +4,7 @@ description: Current state of the prompt-manager org, roster, and immediate prio
 type: project
 ---
 
-As of 2026-03-29.
+As of 2026-03-29 (session: founder decision-making).
 
 ## Roster
 
@@ -44,16 +44,27 @@ Six prompt types, all documented in DESIGN.md:
 - **Duplicate directive comment in build output** — mailed to FSE, low priority
 - **NPM_TOKEN** — must be set in GitHub repo settings before first `npm publish`
 
-## Pending With Other Agents
+## In Progress With Other Agents
 
-- **FSE inbox**: duplicate directive comment fix + `pm session` worktree spec
-- **Recruiter inbox**: developer-relations posting, first task
+- **FSE**: `pm session` implementation (3 design decisions approved, proceeding)
+- **Recruiter**: developer-relations hiring (candidate interview workflow, pending recommendation)
 
 ## Next Session Priorities
 
-1. Review developer-relations hire recommendation when recruiter delivers it
-2. Consider additional north star directives before org grows further
-3. `pm session` worktree isolation — track FSE progress
+1. Track `pm session` implementation progress (approved, FSE in flight)
+2. Receive and evaluate developer-relations hire recommendation from recruiter
+3. After FSE completes `pm session`, approve transition to multi-repo support
+4. Hire developer-relations once recruiter delivers recommendation
+5. Brief dev-rel on adoption/documentation roadmap once hired
+
+## Strategic Direction (Founder Decision, this session)
+
+**Post-pm-session roadmap:**
+1. `pm session` — structural branch discipline (in progress)
+2. Multi-repo support — pm discovers own config, works across org repositories
+3. CLI commands — `pm list`, `pm explain`, `pm validate` for user exploration
+
+**Rationale:** dev-relations hire (pending) needs to write adoption guide. That guide depends on multi-repo working cleanly. These three features unlock distribution across org repos.
 
 ## Session Lessons (see `.pm/memory/`)
 
