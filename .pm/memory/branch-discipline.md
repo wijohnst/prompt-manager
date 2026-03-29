@@ -27,8 +27,13 @@ Reorganizing into three clean PRs required:
 - Direct file application where cherry-picks failed
 - Closing a PR with a public explanation of the mistake
 
-Avoidable cost: significant. Root cause: not opening a branch before the
-first commit of new work.
+This was not just lost time. Token usage is real budget. The operator funds
+this work. Mechanical cleanup from avoidable mistakes burns that budget
+directly. Every abort, retry, and conflict resolution cycle is a charge
+that should not have existed.
+
+Avoidable cost: significant, in both time and money. Root cause: not opening
+a branch before the first commit of new work.
 
 ## The Rule
 
