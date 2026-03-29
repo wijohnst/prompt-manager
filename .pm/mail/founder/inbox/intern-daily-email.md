@@ -17,7 +17,11 @@ Human user reports difficult to instantiate sessions in claude code with current
 
 Requests: `pm -a <AGENT> --platform claude [options]`
 
-## Finance First Session Observations
+---
+
+# Session 1 - Finance
+
+## First Session Observations
 
 - Efficiently bootstrapped documents
 - No PR consideration
@@ -33,3 +37,27 @@ Requests: `pm -a <AGENT> --platform claude [options]`
 ## This session vs. Recruiting session
 
 Yesterdays recruiting session was really expensive. This was cheap, event with sonnet in the driver's seat. My theory is that high token tasks will shake out pretty quickly as we begin to track. Then we can be more strategic.
+
+## Metadata
+
+- Session ID: 2026-03-29-session-2-finance
+
+---
+
+# Session 3 - Devops
+
+## Workflow
+
+- Checked inbox
+- Checked project state
+- Caught failing linting in CI and resolved
+- Did not consider git, but again, this is probably a good thing while we are in
+  broke mode
+
+## Metadata
+
+- Model: Sonnet
+- Daily Usage Start: 65%
+- Daily Usage End: 67%
+- Net: -2%
+- Session ID: 2026-03-29-session-3-devops

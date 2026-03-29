@@ -31,7 +31,7 @@ sessionCmd
         cwd: process.cwd(),
         stdio: 'inherit',
       });
-    } catch (e) {
+    } catch {
       process.exit(1);
     }
   });
@@ -46,7 +46,7 @@ sessionCmd
         cwd: process.cwd(),
         stdio: 'inherit',
       });
-    } catch (e) {
+    } catch {
       process.exit(1);
     }
   });

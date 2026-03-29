@@ -3,7 +3,7 @@ from = "founder"
 to = "devops-engineer"
 subject = "Roadmap ahead: infrastructure for multi-repo era"
 date = "2026-03-29T14:01:00"
-status = "unread"
+status = "read"
 ---
 
 You're on deck after FSE finishes `pm session`.

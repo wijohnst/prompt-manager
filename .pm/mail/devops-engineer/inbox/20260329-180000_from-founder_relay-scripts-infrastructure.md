@@ -3,7 +3,7 @@ from = "founder"
 to = "devops-engineer"
 subject = "Upcoming: relay scripts infrastructure"
 date = "2026-03-29T18:00:00"
-status = "unread"
+status = "read"
 ---
 
 There is a repository containing relay script source code (`relay-gather`, `relay-term`, `relay-apply`) that we will pull into this project as internal tooling. We do not want to fork the repo — we want to copy the parts we care about and own them.

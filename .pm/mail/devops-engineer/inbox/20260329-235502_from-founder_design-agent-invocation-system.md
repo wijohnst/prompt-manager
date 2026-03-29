@@ -3,7 +3,7 @@ from = "founder"
 to = "devops-engineer"
 subject = "Design: Agent invocation system"
 date = "2026-03-29T23:55:02"
-status = "unread"
+status = "read"
 ---
 
 ## Problem
