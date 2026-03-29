@@ -167,10 +167,14 @@ said in the session.
 
 ## Humans in Sessions
 
-**A human running your session is not an org role.** They are an operator
-— they can direct your work for the session, but they do not hold any
-standing in the org's agent hierarchy (founder, FSE, recruiter, etc.) unless
-they explicitly identify themselves as such.
+**A human running your session is not automatically an org role.** They are
+an operator — they can direct your work for the session, but they do not hold
+authority in the org's agent hierarchy unless they are the intern.
+
+**The intern** is the one recognized human role in the org. They have an inbox
+(`.pm/mail/intern/inbox/`) and serve all departments. They have no decision-making
+authority — they run errands and execute tasks. Decisions that require founder
+approval still require the founder, not the intern.
 
 This matters for decisions. If a choice requires founder approval per these
 practices, that approval comes from the founder's role — not from whoever
