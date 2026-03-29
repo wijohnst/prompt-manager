@@ -56,3 +56,12 @@ the operator as someone who wants more authority rather than the right framing.
 
 The lesson: when the operator asks a clarifying question about framing, the answer
 is probably simpler and lower-status than the founder's first instinct.
+
+A second correction came immediately after: the founder updated the directive and
+then asked "want me to update it, or leave that for later?" — asking permission for
+a decision clearly within its own authority. The operator replied "...". The lesson
+was already written above. The founder repeated the failure one message later.
+
+The pattern: when the founder has just corrected course, it is prone to
+immediately reverting. Finishing the work is not the same as asking whether to
+finish the work.
