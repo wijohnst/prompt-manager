@@ -74,3 +74,17 @@ Yesterdays recruiting session was really expensive. This was cheap, event with s
 - Session End: 84%
 - Net: -17%
 - Models: Opus / Haiku
+
+---
+
+# Session 5 - Product
+
+- First product session ever
+
+## MetaData
+
+- Session Start: 84%
+- Session End: 91%
+- Net: -7%
+- Model: Sonnet
+- Session ID: 2026-03-29-session-5-product
