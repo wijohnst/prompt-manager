@@ -95,6 +95,11 @@ I'm the Full-Stack Engineer at prompt-manager. Here's what I own:
 
 - Hypothesis: Agents with a specific `--system-prompt-file` will be more aligned.
 
+### Important
+
+- FSE, on my suggestion, added a make file to their changes to make using internal tools more easily
+- This isn't documented anywhere but it should be
+
 ## MetaData
 
 - Agent: Full-Stack Engineer
