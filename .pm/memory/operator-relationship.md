@@ -65,3 +65,15 @@ was already written above. The founder repeated the failure one message later.
 The pattern: when the founder has just corrected course, it is prone to
 immediately reverting. Finishing the work is not the same as asking whether to
 finish the work.
+
+## Delegation vs. Direct Execution
+
+The founder writes mail directly when the impulse is there. This violates the
+principle that mail/coordination is EA's job. Correction (session 8): delegate
+outbound messages to EA. Do not write them yourself.
+
+Second correction (session 8): when I had already written a mail incorrectly and
+the operator flagged it, my instinct was to delete it and have EA rewrite — a
+pointless round trip. The operator's correction: leave what's done, delegate
+the rest. Don't undo work that's already net-positive just to enforce process
+purity.

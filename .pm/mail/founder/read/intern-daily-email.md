@@ -139,3 +139,17 @@ investor expectations.
 - Session End: 95%
 - Net: - >1%
 - Session ID: 2026-03-29-session-7-executive-board
+
+---
+
+# Session 8 - Founder
+
+This session is happening now. The daily session budget has reset. Founder is running in sonnet to conserve tokens at start-of-day.
+
+## MetaData
+
+- Agent: Sonnet
+- Session Start: 1.0%
+- Session End: TBD
+- Net: TBD
+- Session ID: 2026-03-29-session-8-founder

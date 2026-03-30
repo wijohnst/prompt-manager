@@ -98,8 +98,14 @@ Six prompt types documented in DESIGN.md:
 
 ## Next Priorities
 
-1. Write vision statement (investor deliverable)
+1. ~~Write vision statement~~ ✓ done — `.pm/docs/vision-statement.md`
 2. Consolidate company policies documentation (investor deliverable)
 3. Brief PM on relay scripts migration once PM session runs
 4. Follow up on AIG plan allocation once board responds
 5. Push branches and open PRs for onboarding + board setup
+
+## In Progress With Other Agents (updated session 8)
+
+- **EA**: delegated outbound — confirm architecture decision to FSE, route UX request to PM
+- **Finance**: session tracking format delivered; budget allocation pending AIG total
+- **FSE**: rewriting `pm session` as standalone `pm-session` bash script
