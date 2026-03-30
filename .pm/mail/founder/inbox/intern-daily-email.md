@@ -107,3 +107,7 @@ I'm the Full-Stack Engineer at prompt-manager. Here's what I own:
 - Session End: 21%
 - Net: -2%
 - Session ID: 2026-03-29.5-session-3-fse
+
+## IMPORTANT
+
+- `.pm` should not be under version control
