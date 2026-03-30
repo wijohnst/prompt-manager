@@ -1,3 +1,14 @@
 node_modules/
 dist/
 *.js.map
+
+# .pm/ is a working directory for operational context, not version control
+# Only .pm/prompts/ (source material for agents) and .pm/docs/ stay tracked
+.pm/build/
+.pm/mail/
+.pm/memory/
+.pm/design-explorations/
+.pm/experiment/
+.pm/finance/
+.pm/interview/
+.pm/jobs/

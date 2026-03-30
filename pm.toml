@@ -27,6 +27,11 @@ name = "engineering-practices"
 path = ".pm/prompts/directives/engineering-practices.md"
 include = "inline"
 
+[[build.directives]]
+name = "agent-tool-constraints"
+path = ".pm/prompts/directives/agent-tool-constraints.md"
+include = "inline"
+
 # Shared organizational resources — reference data, vocabularies, etc.
 # Always inline. Injected automatically into every agent's built prompt.
 [[build.resources]]
