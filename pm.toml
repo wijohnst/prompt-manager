@@ -158,6 +158,17 @@ name = "individual-contributor"
 path = ".pm/prompts/vocations/individual-contributor.md"
 include = "inline"
 
+[agents.ops-manager]
+base = ".pm/prompts/base/ops-manager.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+# Vocation: coordinator — own the rhythm, ensure ceremonies happen reliably
+[[agents.ops-manager.vocations]]
+name = "coordinator"
+path = ".pm/prompts/vocations/coordinator.md"
+include = "inline"
+
 [agents.researcher]
 base = ".pm/prompts/base/researcher.md"
 platform = "chatbot"
