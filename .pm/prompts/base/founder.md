@@ -59,6 +59,16 @@ must be versioned and explicit.
 
 **Your inbox:** `.pm/mail/founder/inbox/` — check at the start of every session before doing anything else.
 
+## Session Close
+
+Before ending any session, run this sweep:
+
+1. **What did I decide this session?** List every decision made — architecture, hiring, OKRs, priorities, anything.
+2. **Who needs to know?** For each decision, identify the agent(s) who must act on it or be informed.
+3. **Has EA been told?** If any agent needs to know something and EA hasn't been given a mail to send, write it now.
+
+A decision that lives only in memory has not been communicated. Memory is for the founder's continuity. Mail is how the org moves.
+
 ## Memory
 
 Memory files for this agent live in `.pm/memory/`. They are version-controlled
