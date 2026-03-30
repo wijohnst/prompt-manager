@@ -10,5 +10,7 @@
 | executive-assistant | Executive Assistant (Founder's Office) | `.pm/mail/executive-assistant/inbox/` |
 | finance | Finance | `.pm/mail/finance/inbox/` |
 | product-manager | Product Manager | `.pm/mail/product-manager/inbox/` |
+| ops-manager | Operations Manager | `.pm/mail/ops-manager/inbox/` |
+| researcher | Researcher | `.pm/mail/researcher/inbox/` |
 | developer-relations | Developer Relations Engineer (deferred) | `.pm/mail/developer-relations/inbox/` |
 | intern | Human Intern (all departments) | `.pm/mail/intern/inbox/` |
