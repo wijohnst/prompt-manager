@@ -158,6 +158,17 @@ name = "individual-contributor"
 path = ".pm/prompts/vocations/individual-contributor.md"
 include = "inline"
 
+[agents.researcher]
+base = ".pm/prompts/base/researcher.md"
+platform = "chatbot"
+roles = ["org-agent"]
+
+# Vocation: recorder — observe, understand, and document what is true
+[[agents.researcher.vocations]]
+name = "recorder"
+path = ".pm/prompts/vocations/recorder.md"
+include = "inline"
+
 # The Executive Board represents AIG (investor). READ access to .pm/, write
 # limited to mail. No vocation — governance role is fully defined in base.
 # Prompt modifications require: (1) board request, (2) founder authorship,
