@@ -111,3 +111,27 @@ I'm the Full-Stack Engineer at prompt-manager. Here's what I own:
 ## IMPORTANT
 
 - `.pm` should not be under version control
+
+## Session 3 - Finance
+
+- First session using `pm-session`
+  -- It works well for spinning up the worktrees but that feels less useful that if it just spun up a normal session
+  -- A worktree feels overkill for me and my needs
+  -- I'd still like something where it would accept the agent, build the prompt, and generate instantiate the session setting via `claude --system-prompt-file=<PATH_TO_BUILT_PROMPT>` and it would also configure session name
+- I likely won't use pm-session again in the current state
+- Its not that it isn't valuable, I'm just not spinning up simultaenous sessions, which defeats the need for a worktree
+
+- Often get slowed down with permissions requests for reading paths in `.pm`
+- How can we configure certain permissions globally? It would add efficiency to user guided sessions
+- All low risk actions should be whitelisted
+- DevOps should own this
+- Now that budget tracking is in place, can you tell me what the plan is for support tooling re: actually tracking per-session usage / metadata?
+
+## MetaData
+
+- Agent: Finance
+- Model: Sonnet
+- Session Start: 23%
+- Session End: 26%
+- Net: - 3%
+- Session ID: aig-budget-tracking-setup
